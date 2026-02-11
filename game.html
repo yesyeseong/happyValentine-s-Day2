@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>연애 퀴즈</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>💌 연애 시작일을 맞춰보세요</h1>
+    <p>우리가 연애를 시작한 날짜는?</p>
+
+    <input type="text" id="answer" placeholder="네 자리 입력" maxlength="4">
+    <button onclick="checkAnswer()">확인</button>
+
+    <p id="message"></p>
+
+    <div id="passwordBox" style="display:none;">
+        <input type="text" id="password" placeholder="암호 입력">
+        <button onclick="checkPassword()">입력</button>
+    </div>
+</div>
+
+<script>
+function checkAnswer(){
+    const answer=document.getElementById("answer").value;
+    if(answer==="0811"){
+        document.getElementById("message").innerHTML="🎉 정답입니다! 암호는 '사랑해'";
+        document.getElementById("passwordBox").style.display="block";
+    }else{
+        document.getElementById("message").innerHTML="다시 생각해볼까요?";
+    }
+}
+
+function checkPassword(){
+    if(document.getElementById("password").value==="사랑해"){
+        location.href="next.html";
+    }else{
+        alert("암호가 틀렸어요");
+    }
+}
+
+for(let i=0;i<20;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="❤";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(4+Math.random()*4)+"s";
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
